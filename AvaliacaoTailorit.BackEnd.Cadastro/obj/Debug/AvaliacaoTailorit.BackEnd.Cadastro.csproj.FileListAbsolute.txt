@@ -1,0 +1,8 @@
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\bin\Debug\AvaliacaoTailorit.BackEnd.Cadastro.dll
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\bin\Debug\AvaliacaoTailorit.BackEnd.Cadastro.pdb
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\bin\Debug\FluentValidation.dll
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\bin\Debug\FluentValidation.xml
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\obj\Debug\AvaliacaoTailorit.BackEnd.Cadastro.csproj.CopyComplete
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\obj\Debug\AvaliacaoTailorit.BackEnd.Cadastro.dll
+C:\Projetos\Desenvolvimentos\AvaliacaoTailorit.Backend\AvaliacaoTailorit.BackEnd.Cadastro\obj\Debug\AvaliacaoTailorit.BackEnd.Cadastro.pdb
