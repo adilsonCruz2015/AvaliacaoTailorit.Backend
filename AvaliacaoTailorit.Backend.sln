@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Servico", "1 - Servico"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Estrutura", "2 - Estrutura", "{C6982AC7-AE13-408D-91F9-D0858F3EC77D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaliacaoTailorit.BackEnd.Cadastro", "AvaliacaoTailorit.BackEnd.Cadastro\AvaliacaoTailorit.BackEnd.Cadastro.csproj", "{0BDDEB93-9A69-45B8-B258-D85FA54CA6D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaliacaoTailorit.BackEnd.Cadastro", "src\AvaliacaoTailorit.BackEnd.Cadastro\AvaliacaoTailorit.BackEnd.Cadastro.csproj", "{0BDDEB93-9A69-45B8-B258-D85FA54CA6D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
