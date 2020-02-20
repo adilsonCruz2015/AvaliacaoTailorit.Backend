@@ -8,8 +8,8 @@ namespace AvaliacaoTailorit.Backend.Idc.Modulos
     {
         public static void Carregar(Container recipiente)
         {
-            recipiente.Register<IUsuarioServico, UsuarioServico>();
-            //recipiente.Register<ISexoServico, SexoServico>();
+            recipiente.Register<IUsuarioServico, UsuarioServico>(Lifestyle.Scoped);
+            recipiente.Register<ISexoServico, SexoServico>(Lifestyle.Scoped);
         }
     }
 }

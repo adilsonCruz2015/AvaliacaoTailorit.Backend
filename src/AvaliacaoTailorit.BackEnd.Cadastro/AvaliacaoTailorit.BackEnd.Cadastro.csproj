@@ -50,24 +50,24 @@
   <ItemGroup>
     <Compile Include="Dominio\Comandos\UsuarioCmd\FiltrarCmd.cs" />
     <Compile Include="Dominio\Comandos\UsuarioCmd\InserirCmd.cs" />
-    <Compile Include="Dominio\Comandos\UsuarioCmd\Validacao\UsuarioValidacao.cs" />
+    <Compile Include="Dominio\Comandos\UsuarioCmd\Validacao\FiltrarValidacao.cs" />
+    <Compile Include="Dominio\Comandos\UsuarioCmd\Validacao\InserirValidacao.cs" />
     <Compile Include="Dominio\Entidades\ObjetoDeValor\Sexo.cs" />
     <Compile Include="Dominio\Entidades\Usuario.cs" />
     <Compile Include="Dominio\Interfaces\INotificador.cs" />
     <Compile Include="Dominio\Interfaces\Repositorio\Comum\IRepository.cs" />
     <Compile Include="Dominio\Interfaces\Repositorio\ISexoRep.cs" />
     <Compile Include="Dominio\Interfaces\Repositorio\IUsuarioRep.cs" />
+    <Compile Include="Dominio\Interfaces\Servico\ISexoServico.cs" />
     <Compile Include="Dominio\Interfaces\Servico\IUsuarioServico.cs" />
     <Compile Include="Dominio\Notificacoes\Notificacao.cs" />
     <Compile Include="Dominio\Notificacoes\Notificador.cs" />
     <Compile Include="Dominio\Servicos\Comum\BaseService.cs" />
+    <Compile Include="Dominio\Servicos\SexoServico.cs" />
     <Compile Include="Dominio\Servicos\UsuarioServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dominio\Persistencia\Interfaces\" />
-    <Folder Include="Dominio\Persistencia\Repositorios\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

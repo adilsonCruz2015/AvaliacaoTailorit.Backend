@@ -35,5 +35,10 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos.Comum
 
             return false;
         }
+
+        public bool HaNotificacoes()
+        {
+            return _notificador.TemNotificacao();
+        }
     }
 }

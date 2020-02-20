@@ -1,4 +1,5 @@
 ﻿using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Repositorio;
+using AvaliacaoTailorit.BackEnd.Data.Persistencia.Repositorios;
 using SimpleInjector;
 
 namespace AvaliacaoTailorit.Backend.Idc.Modulos
@@ -7,8 +8,8 @@ namespace AvaliacaoTailorit.Backend.Idc.Modulos
     {
         public static void Carregar(Container recipiente) 
         {
-            //recipiente.Register<IUsuarioRep, UsuarioRep>();
-            //recipiente.Register<ISexoRep, SexoRep>();
+            recipiente.Register<IUsuarioRep, UsuarioRep>(Lifestyle.Scoped);
+            recipiente.Register<ISexoRep, SexoRep>(Lifestyle.Scoped);
         }
     }
 }

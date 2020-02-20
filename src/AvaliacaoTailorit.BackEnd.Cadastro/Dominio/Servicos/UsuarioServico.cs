@@ -6,7 +6,6 @@ using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Repositorio;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Servico;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos.Comum;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,29 +25,36 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos
         private readonly IUsuarioRep _rep;
         private readonly ISexoRep _sexoRep;
 
-        public async Task Adicionar(InserirCmd comando)
+        public Usuario Adicionar(InserirCmd comando)
         {
             Usuario usuario = null;
-            Sexo sexo = null;
+            int resultado = 0;
 
-            if (!ExecutarValidacao(new UsuarioValidacao(), comando)) return;
-
-            if(_rep.Find(x => x.Nome.Equals(comando.Nome) && x.Email.Equals(comando.Email)  ).Result.Any())
+            if (ExecutarValidacao(new InserirValidacao(), comando))
             {
-                Notificar("Já existe um usuário com essas informações");
-                return;
+                FiltrarCmd filtro = new FiltrarCmd() { Nome = comando.Nome, Ativo = "true" };
+
+                if (_rep.Filtrar(filtro)?.Count() > 0)
+                    Notificar("Já existe um usuário com essas informações");
+                   
+                if(!HaNotificacoes())
+                {
+                    Sexo sexo = _sexoRep.Get(comando.Sexo);
+                    if (object.Equals(sexo, null))
+                        Notificar("Não foi possível localizar o sexo do usuário");
+
+                    if (!HaNotificacoes())
+                    {
+                        comando.Aplicar(ref usuario, sexo);
+                        resultado = _rep.Add(usuario);
+
+                        if (resultado < 0)
+                            Notificar("Não foi possível cadastrar o usuário");
+                    }
+                }
             }
 
-            sexo = await _sexoRep.Get(comando.Sexo);
-
-            if(!object.Equals(sexo, null))
-            {
-                Notificar("Não foi possível localizar o sexo do usuário");
-                return;
-            }
-
-            comando.Aplicar(ref usuario, sexo);
-            await _rep.Add(usuario);
+            return usuario;
         }
 
         public void Dispose()
@@ -57,14 +63,25 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos
             _sexoRep?.Dispose();
         }
 
-        public async Task<IEnumerable<Usuario>> Filtrar(FiltrarCmd comando)
+        public Usuario[] Filtrar(FiltrarCmd comando)
         {
-            return await _rep.Filtrar(comando);
+            Usuario[]  usuarios = _rep.Filtrar(comando);
+
+            if (!object.Equals(usuarios, null) && usuarios.Count().Equals(0))
+                Notificar("Registros não encontrados");
+            
+
+            return usuarios;
         }
 
-        public async Task<IEnumerable<Usuario>> Obtertodos()
+        public Usuario Obter(int id)
         {
-            return await _rep.Get();
+            Usuario usuario = _rep.Get(id);
+
+            if (object.Equals(usuario, null))
+                Notificar("Usuário não encontrado");
+            
+            return usuario;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Entidades
     {
         protected Usuario()
         {
-            Status = true;
+            Ativo = true;
         }
 
         public Usuario(string nome,
@@ -36,6 +36,6 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Entidades
 
         public Sexo Sexo { get; set; }
 
-        public bool Status { get; set; }
+        public bool Ativo { get; set; }
     }
 }
