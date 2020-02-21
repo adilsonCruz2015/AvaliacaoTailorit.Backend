@@ -4,7 +4,7 @@ using System;
 
 namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Servico
 {
-    public interface IUsuarioServico : IDisposable
+    public interface IUsuarioServico 
     {
         Usuario Adicionar(InserirCmd comando);
 

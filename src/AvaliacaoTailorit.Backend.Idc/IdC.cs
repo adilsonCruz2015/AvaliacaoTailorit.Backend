@@ -9,6 +9,7 @@ namespace AvaliacaoTailorit.Backend.Idc
         {
             ServicoModulo.Carregar(recipiente);
             RepositorioModulo.Carregar(recipiente);
+            InfraestruturaModulo.Carregar(recipiente);
         }
     }
 }

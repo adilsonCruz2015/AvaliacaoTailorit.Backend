@@ -52,9 +52,13 @@
     <Compile Include="Dominio\Comandos\UsuarioCmd\InserirCmd.cs" />
     <Compile Include="Dominio\Comandos\UsuarioCmd\Validacao\FiltrarValidacao.cs" />
     <Compile Include="Dominio\Comandos\UsuarioCmd\Validacao\InserirValidacao.cs" />
+    <Compile Include="Dominio\Entidades\ObjetoDeValor\Banco.cs" />
     <Compile Include="Dominio\Entidades\ObjetoDeValor\Sexo.cs" />
     <Compile Include="Dominio\Entidades\Usuario.cs" />
     <Compile Include="Dominio\Interfaces\INotificador.cs" />
+    <Compile Include="Dominio\Interfaces\IUnidadeDeTrabalho.cs" />
+    <Compile Include="Dominio\Interfaces\Repositorio\Comum\IRepositorioBaseEscrita.cs" />
+    <Compile Include="Dominio\Interfaces\Repositorio\Comum\IRepositorioBaseLeitura.cs" />
     <Compile Include="Dominio\Interfaces\Repositorio\Comum\IRepository.cs" />
     <Compile Include="Dominio\Interfaces\Repositorio\ISexoRep.cs" />
     <Compile Include="Dominio\Interfaces\Repositorio\IUsuarioRep.cs" />

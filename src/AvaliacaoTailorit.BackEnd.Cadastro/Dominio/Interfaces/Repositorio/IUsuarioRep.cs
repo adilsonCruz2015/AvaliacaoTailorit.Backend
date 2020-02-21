@@ -4,7 +4,8 @@ using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Repositorio.Comum;
 
 namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Repositorio
 {
-    public interface IUsuarioRep : IRepository<Usuario> 
+    public interface IUsuarioRep : IRepositorioBaseEscrita<Usuario>,
+                                   IRepositorioBaseLeitura<Usuario>
     {
         Usuario[] Filtrar(FiltrarCmd comando);
     }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdC.cs" />
+    <Compile Include="Modulos\InfraestruturaModulo.cs" />
     <Compile Include="Modulos\RepositorioModulo.cs" />
     <Compile Include="Modulos\ServicoModulo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

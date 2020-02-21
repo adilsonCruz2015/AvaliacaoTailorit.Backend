@@ -130,6 +130,7 @@
     <Compile Include="App_Start\JsonConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Auxiliar\ResolverConexao.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\SexoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -149,6 +150,10 @@
     <ProjectReference Include="..\AvaliacaoTailorit.BackEnd.Cadastro\AvaliacaoTailorit.BackEnd.Cadastro.csproj">
       <Project>{0bddeb93-9a69-45b8-b258-d85fa54ca6d1}</Project>
       <Name>AvaliacaoTailorit.BackEnd.Cadastro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvaliacaoTailorit.BackEnd.Data\AvaliacaoTailorit.BackEnd.Data.csproj">
+      <Project>{d785d2e7-cb2c-4d27-93d2-c323cce37f0c}</Project>
+      <Name>AvaliacaoTailorit.BackEnd.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\AvaliacaoTailorit.Backend.Idc\AvaliacaoTailorit.Backend.Idc.csproj">
       <Project>{f2f957ff-924b-4781-bd1f-27568a58930c}</Project>

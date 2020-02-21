@@ -1,76 +1,72 @@
 ﻿using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Entidades.ObjetoDeValor;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Repositorio;
-using AvaliacaoTailorit.BackEnd.Data.Persistencia.Fabrica;
+using AvaliacaoTailorit.BackEnd.Data.Persistencia.Interfaces;
 using Dapper;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 
 namespace AvaliacaoTailorit.BackEnd.Data.Persistencia.Repositorios
 {
     public class SexoRep : ISexoRep
     {
-        public int Add(Sexo entity)
+        public SexoRep(IConexao conexao)
         {
-            StringBuilder sql = new StringBuilder();
-            int resultado = -1;
-
-            sql.Append($@"
-                         INSERT INTO { nameof(Sexo) } (Descricao)
-                                VALUES(@Descricao)");
-
-            using (var conn = new SqlConnection(ConnectionString.Conexao))
-            { 
-                try
-                {
-                    var parametros = new DynamicParameters();
-                    parametros.Add("@Descricao", entity.Descricao, DbType.AnsiString, size: 15);
-
-                    resultado =  conn.Execute(sql.ToString(), parametros);
-                }
-                catch(SqlException)
-                {
-                    
-                }
-            }
-
-            return resultado;
+            _conexao = conexao;
+            _conexao.InformarBanco(Banco.AvaliacaoTailorit);
         }
 
-        public void Dispose() {  }
-
-        public Sexo Get(int id)
-        {
-            StringBuilder sql = new StringBuilder();
-            Sexo sexo = null;
-
-            sql.Append($@"SELECT 
-                        SexoId,
-                        Descricao 
-                        FROM { nameof(Sexo) } 
-                        WHERE SexoId = @SexoId");
-
-            using (var conn = new SqlConnection(ConnectionString.Conexao))
-                sexo = conn.Query<Sexo>(sql.ToString(), new { SexoId = id }).FirstOrDefault();
-
-            return sexo;
-        }
+        private readonly IConexao _conexao;
 
         public Sexo[] Get()
         {
-            StringBuilder sql = new StringBuilder();
-            Sexo[] sexos = null;
+            return  _conexao.Sessao.Query<Sexo>(
+                              $@"SELECT 
+                                      SexoId,
+                                      Descricao 
+                                FROM { nameof(Sexo) }", 
+                                new { }, 
+                                _conexao.Transicao).ToArray();
+        }
 
-            sql.Append($@"SELECT 
-                        SexoId,
-                        Descricao 
-                        FROM { nameof(Sexo) }");
+        public Sexo Get(int id)
+        {
+            return _conexao.Sessao.Query<Sexo>(
+                     $@"SELECT 
+                          SexoId,
+                          Descricao 
+                        FROM { nameof(Sexo) } 
+                        WHERE SexoId = @SexoId", 
+                     new { SexoId = id },
+                     _conexao.Transicao
+                     ).FirstOrDefault();
+        }
 
-            using (var conn = new SqlConnection(ConnectionString.Conexao))
-                sexos = conn.Query<Sexo>(sql.ToString(), new { }).ToArray();
+        public int Insert(Sexo obj)
+        {
+            var parametros = new DynamicParameters();
+            parametros.Add("@Descricao", 
+                            obj.Descricao, 
+                            DbType.AnsiString, 
+                            size: 15);
 
-            return sexos;
+            return  _conexao.Sessao.Execute($@" INSERT INTO { nameof(Sexo) } (Descricao) 
+                                                       VALUES(@Descricao)", 
+                                            parametros, 
+                                            _conexao.Transicao);
+        }
+
+        public int Update(Sexo obj)
+        {
+            var parametros = new DynamicParameters();
+            parametros.Add("@Descricao",
+                            obj.Descricao,
+                            DbType.AnsiString,
+                            size: 15);
+
+            return _conexao.Sessao.Execute($@"UPDATE { nameof(Sexo)} 
+                                                SET Descricao = @Descricao WHERE SexoId = @SexoId",
+                                                new { obj.SexoId },
+                                                _conexao.Transicao);
         }
     }
 }

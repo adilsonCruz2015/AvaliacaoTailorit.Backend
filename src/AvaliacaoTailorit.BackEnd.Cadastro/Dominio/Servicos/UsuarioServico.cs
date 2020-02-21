@@ -7,7 +7,6 @@ using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Repositorio;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces.Servico;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos.Comum;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos
 {
@@ -46,7 +45,7 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos
                     if (!HaNotificacoes())
                     {
                         comando.Aplicar(ref usuario, sexo);
-                        resultado = _rep.Add(usuario);
+                        resultado = _rep.Insert(usuario);
 
                         if (resultado < 0)
                             Notificar("Não foi possível cadastrar o usuário");
@@ -55,12 +54,6 @@ namespace AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Servicos
             }
 
             return usuario;
-        }
-
-        public void Dispose()
-        {
-            _rep?.Dispose();
-            _sexoRep?.Dispose();
         }
 
         public Usuario[] Filtrar(FiltrarCmd comando)

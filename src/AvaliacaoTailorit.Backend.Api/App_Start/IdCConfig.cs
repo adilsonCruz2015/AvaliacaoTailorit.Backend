@@ -1,5 +1,7 @@
-﻿using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces;
+﻿using AvaliacaoTailorit.Backend.Api.Auxiliar;
+using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Interfaces;
 using AvaliacaoTailorit.BackEnd.Cadastro.Dominio.Notificacoes;
+using AvaliacaoTailorit.BackEnd.Data.Persistencia.Interfaces;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using SimpleInjector.Lifestyles;
@@ -15,6 +17,7 @@ namespace AvaliacaoTailorit.Backend.Api
 
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
             container.Register<INotificador, Notificador>(Lifestyle.Scoped);
+            container.Register<IResolverConexao, ResolverConexao>(Lifestyle.Scoped);
 
             Idc.IdC.Carregar(container);
             container.RegisterWebApiControllers(config);
